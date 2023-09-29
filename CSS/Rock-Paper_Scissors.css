@@ -1,0 +1,113 @@
+body
+{
+    background-color: black;
+}
+
+.intro
+{
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+    font-family: 'Tourney', cursive;
+    color: white;
+}
+
+.Heading
+{
+    font-size: 50px;
+    text-align: center;
+    margin-top: 0px;
+    font-family: 'Tourney', cursive;
+    color: white;
+}
+
+.rock,.paper,.scissors
+{
+    width: 400px;
+    height: 300px;
+    margin-left: 50px;
+    margin-right: 20px;
+    border-radius: 20px;
+    border: solid;
+    border-color: rgb(220, 220, 11);
+    background-color: black;
+    cursor: pointer;
+    transition: 0.15s;
+}
+
+.rock:hover,.paper:hover,.scissors:hover
+{
+    background-color: rgb(49, 49, 49);
+}
+
+.rock:active,.paper:active,.scissors:active
+{
+    opacity: 0.7;
+}
+
+.rock
+{
+    margin-left: 40px;
+}
+
+.js-result,.js-VsComputer,.js-score
+{
+    text-align: center;
+    font-size: 30px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color: white;
+    font-family: 'Aldrich', sans-serif;
+}
+
+.reset
+{
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.reset-button
+{
+    height: 50px;
+    border-radius: 7px;
+    border: solid;
+    font-family: 'Aldrich', sans-serif;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    cursor: pointer;
+    border-color: rgb(220, 220, 11);
+    margin-top: 20px;
+    color: white;
+    background-color: black;
+}
+
+.reset-button:hover
+{
+    background-color: rgb(49, 49, 49);
+    color: white;
+    transition: 0.15s;
+}
+
+.reset-button:active
+{
+    opacity: 0.7;
+}
+
+.button-group
+{
+    margin-bottom: 70px;
+}
+
+.img-rock,.img-paper,.img-scissor
+{
+    height: 150px;
+    width: 150px;   
+}
+
+

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rock Paper and Scissors Final</title>
+        <link rel="stylesheet" href="CSS/Rock-Paper_Scissors.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,700;1,900&family=Tourney:wght@300&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <p class="intro">Let's play</p>
+        <p class="Heading">Rock, Paper & Scissors</p>
+        <div class="button-group">
+             <button
+        onclick="   
+        decision('Rock');
+        "
+        class="rock"
+        >
+        <img class="img-rock" src="/Icons/stone.png">
+        </button>
+        <button
+        onclick="
+        decision('Paper');
+        "
+        class="paper"
+        >
+        <img class="img-paper" src="/Icons/toilet-paper.png">
+        </button>
+        <button
+        onclick="
+        decision('Scissors');
+        "
+        class="scissors"
+        >
+        <img class="img-scissor" src="/Icons/scissor-tool.png">
+        </button>
+        </div>
+       
+        <p class="js-result" id="element"></p>
+        <p class="js-VsComputer"></p>
+        <p class="js-score"> </p>
+        <div class="reset">
+            <button
+            class="reset-button"
+            onclick="
+            score.Wins=0;
+            score.Loses=0;
+            score.Tie=0
+            localStorage.removeItem('score');
+            updateScoreElement();"
+            > 
+            Reset Score
+            </button>
+        </div>
+       
+           
+        <script>
+            let score = JSON.parse(localStorage.getItem('score'))|| {Wins:0,Loses:0,Tie:0};
+            updateScoreElement();
+            //document.querySelector('.js-decision').innerHTML = `You picked ${Playermove} and Computer picked ${computerPick}, ${result}.`;
+            let computerPick = ''; 
+            function computerRandom()
+            { 
+            const computerMove = Math.random();
+            if(computerMove<1/3)
+            {
+                computerPick='Rock';
+            }
+            else if(computerMove>1/3 && computerMove<2/3)
+            {
+                computerPick='Paper';
+            }
+            else if(computerMove>2/3)
+            {
+                computerPick='Scissors';
+            }
+           }
+           let result='';
+           function decision(Playermove)
+         {
+            computerRandom();
+            if(Playermove === 'Rock')
+            {
+                if(computerPick === 'Rock')
+                {
+                    result=`It's Tie`;
+                }
+                else if(computerPick === 'Paper')
+                {
+                    result='You Lose';
+                }
+                else if(computerPick === 'Scissors')
+                {
+                    result='You Won';
+                } 
+            }
+            else if(Playermove === 'Paper')
+            {
+                if(computerPick === 'Rock')
+                {
+                    result='You Won';
+                }
+                else if(computerPick === 'Paper')
+                {
+                    result=`It's Tie`;
+                }
+                else if(computerPick === 'Scissors')
+                {
+                    result='You Lose';
+                }  
+            }
+            else if(Playermove === 'Scissors')
+            {
+                if(computerPick === 'Rock')
+                {
+                    result='You Lose';
+                }
+                else if(computerPick === 'Paper')
+                {
+                    result='You Won';
+                }
+                else if(computerPick === 'Scissors')
+                {
+                    result=`It's Tie`;
+                }
+            }
+            localStorage.setItem('score',JSON.stringify(score));  
+            scoreAdder(result);
+            //alert(`You picked ${Playermove} and Computer picked ${computerPick}, ${result}.Wins:${score.Wins},Loses:${score.Loses},Tie:${score.Tie}`);
+            WinOrLose();
+            VsComputer(Playermove);
+            updateScoreElement();
+            CSScode(result);
+         }
+            function scoreAdder(result)
+            {
+                if(result === 'You Won')
+                {
+                    score.Wins = score.Wins+1;
+                }
+                else if(result === 'You Lose')
+                {
+                    score.Loses = score.Loses+1;
+                }
+                else if(result === `It's Tie`)
+                {
+                    score.Tie = score.Tie+1;
+                }
+            } 
+
+            function updateScoreElement()
+            {
+                document.querySelector('.js-score').innerHTML = `Wins : ${score.Wins}, Loses : ${score.Loses}, Tie : ${score.Tie}`;
+            }
+
+            function WinOrLose()
+            {
+                document.querySelector('.js-result').innerHTML = `${result}`;
+            }
+
+            function VsComputer(Playermove)
+            {
+                document.querySelector('.js-VsComputer').innerHTML = `You : ${Playermove}  - Computer : ${computerPick}`;
+            }
+
+            function CSScode(result)
+            {
+                if(result === 'You Won')
+                {
+                    var resul = document.getElementById("element");
+                    resul.style.color = "rgb(60, 255, 60)";
+                }
+                else if(result === 'You Lose')
+                {
+                    var resul = document.getElementById("element");
+                    resul.style.color = "red";
+                }
+                else if(result === `It's Tie`)
+                {
+                    var resul = document.getElementById("element");
+                    resul.style.color = "rgb(255, 255, 0)";
+                }
+            }
+
+          
+           
+        </script>
+    </body>
+</html>
